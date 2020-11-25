@@ -1,0 +1,175 @@
+<div class="container">
+
+
+  <button type="button" (click)="clear()" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add Product</button>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Product Rate</th>
+      <th>Product Quality</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Product of ProductList">
+      <td>{{Product.ID}}</td>
+      <td>{{Product.Name}}</td>
+      <td>{{Product.Rate}}</td>        
+      <td>{{Product.Quality}}</td>
+      <td> <button  type="button" (click)="delete(Product.ID)"  title="Delete"  class="btn-sm btn btn-danger">
+      Delete
+        
+      </button></td>
+    
+    </tr>
+   
+  </tbody>
+</table>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Product</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addProduct" class="well" NoValidate>
+
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-lg-3">
+                      <label class="form-control-label">Product ID</label>
+                      <span _ngcontent-c2="" style="color: red;">*</span>
+                  </div>
+                  <div class="col-lg-3">
+                      <div class="form-group">
+                          <input type="text" [formControl]="addProduct.controls['ID']"
+                              class="form-control" style="padding:6px;">
+                          <div *ngIf="addProduct.controls['ID'].hasError('pattern')"
+                              class="form-control-error-custom">
+                              ID is not valid.
+                          </div>
+                          <div *ngIf="addProduct.controls['ID'].hasError('required') && addProduct.controls['ID'].touched"
+                              class="form-control-error-custom">
+                              ID is required.
+                          </div>
+                          <div *ngIf="!addProduct.controls['ID'].hasError('required') && addProduct.controls['ID'].hasError('whitespace') && addProduct.controls['ID'].touched"
+                              class="form-control-error-custom">
+                              ID is not valid.
+                          </div>
+                          <div *ngIf="addProduct.controls['ID'].hasError('maxlength')"
+                              class="form-control-error-custom">
+                              ID must be less than 10 characters.
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <label class="form-control-label">Name</label>
+                    <span _ngcontent-c2="" style="color: red;">*</span>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <input type="text" [formControl]="addProduct.controls['Name']"
+                            class="form-control" style="padding:6px;">
+                        <div *ngIf="addProduct.controls['Name'].hasError('pattern')"
+                            class="form-control-error-custom">
+                            Name is not valid.
+                        </div>
+                        <div *ngIf="addProduct.controls['Name'].hasError('required') && addProduct.controls['Name'].touched"
+                            class="form-control-error-custom">
+                            Name is required.
+                        </div>
+                        <div *ngIf="!addProduct.controls['Name'].hasError('required') && addProduct.controls['Name'].hasError('whitespace') && addProduct.controls['Name'].touched"
+                            class="form-control-error-custom">
+                            Name is not valid.
+                        </div>
+                        <div *ngIf="addProduct.controls['Name'].hasError('maxlength')"
+                            class="form-control-error-custom">
+                            Name must be less than 10 characters.
+                        </div>
+                    </div>
+                </div>
+
+               
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                    <label class="form-control-label">Rate</label>
+                    <span _ngcontent-c2="" style="color: red;">*</span>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <input type="text" [formControl]="addProduct.controls['Rate']"
+                            class="form-control" style="padding:6px;">
+                        <div *ngIf="addProduct.controls['Rate'].hasError('pattern')"
+                            class="form-control-error-custom">
+                            Rate is not valid.
+                        </div>
+                        <div *ngIf="addProduct.controls['Rate'].hasError('required') && addProduct.controls['Rate'].touched"
+                            class="form-control-error-custom">
+                            Rate is required.
+                        </div>
+                        <div *ngIf="!addProduct.controls['Rate'].hasError('required') && addProduct.controls['Rate'].hasError('whitespace') && addProduct.controls['Rate'].touched"
+                            class="form-control-error-custom">
+                            Rate is not valid.
+                        </div>
+                        <div *ngIf="addProduct.controls['Rate'].hasError('maxlength')"
+                            class="form-control-error-custom">
+                            Rate must be less than 999.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                  <label class="form-control-label">Quality</label>
+                  <span _ngcontent-c2="" style="color: red;">*</span>
+              </div>
+              <div class="col-lg-3">
+                  <div class="form-group">
+                      <input type="text" [formControl]="addProduct.controls['Quality']"
+                          class="form-control" style="padding:6px;">
+                      <div *ngIf="addProduct.controls['Quality'].hasError('pattern')"
+                          class="form-control-error-custom">
+                          Quality is not valid.
+                      </div>
+                      <div *ngIf="addProduct.controls['Quality'].hasError('required') && addProduct.controls['Quality'].touched"
+                          class="form-control-error-custom">
+                          Quality is required.
+                      </div>
+                      <div *ngIf="!addProduct.controls['Quality'].hasError('required') && addProduct.controls['Quality'].hasError('whitespace') && addProduct.controls['Quality'].touched"
+                          class="form-control-error-custom">
+                          Quality is not valid.
+                      </div>
+                      <div *ngIf="addProduct.controls['Quality'].hasError('maxlength')"
+                          class="form-control-error-custom">
+                          Quality must be less than 10 characters.
+                      </div>
+                  </div>
+              </div>
+
+             
+            </div>
+          </div>
+
+
+     
+
+   
+      </form>
+      </div>
+      <div class="modal-footer">
+          <button type="button"  [disabled]="!addProduct.valid"  data-dismiss="modal" (click)="add()"  class="btn btn-info">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
